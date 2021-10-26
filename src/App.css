@@ -2,7 +2,7 @@
     border-radius: 6px;
     padding: 19px;
     max-width: 480px;
-    min-width: 350px;
+    min-width: 300px;
     margin: 0px auto;
     margin-top: 130px;
     background-color: #fff;
@@ -103,8 +103,12 @@
     cursor: pointer;
     transition: 0.5s;
     padding-bottom: 3px;
-    
 }
+
+.clear-task:hover {
+    background-color:rgb(108, 28, 184)
+}
+
 .unique-task-container {
     display: flex;
     width: 100%
@@ -163,5 +167,18 @@ label:hover{
         margin-bottom: 35px;
     }
 
+    .clearall-button {
+        padding: 8px 15px;
+        background-color:blueviolet;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: 0.5s;
+        font-size: 16px;
+    }
+    .active-tasks {
+        margin-top: 9px;
+    }
   }
 

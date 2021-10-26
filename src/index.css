@@ -5,12 +5,12 @@
 }
 
 body {
-  background-color: rgb(226, 226, 226);
+  background-color: rgb(238, 238, 238);
 }
 
 @media (max-width: 900px) {
   body {
     background-color: #fff;
   }
-
+  
 }
