@@ -7,6 +7,12 @@ function App() {
   const [notCompleted, setNotCompleted] = useState([]);
 
   useEffect(() => {
+    notCompleted.length === 0
+      ? (document.title = "Lista de Tarefas")
+      : (document.title = `(${notCompleted.length}) Lista de Tarefas`);
+  });
+
+  useEffect(() => {
     const temp = localStorage.getItem("list");
     const loadedList = JSON.parse(temp);
 
@@ -53,9 +59,7 @@ function App() {
       }
       return task;
     });
-
     setList(updatedList);
-    console.log(list);
   };
 
   const clearList = function () {
