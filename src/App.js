@@ -36,14 +36,16 @@ function App() {
   const handleSubmit = function (e) {
     e.preventDefault();
 
-    const newTask = {
-      id: 1 + Math.random(),
-      text: task,
-      completed: false,
-    };
+    if (verifyInput()) {
+      const newTask = {
+        id: 1 + Math.random(),
+        text: task,
+        completed: false,
+      };
 
-    setList([...list].concat(newTask));
-    setTask("");
+      setList([...list].concat(newTask));
+      setTask("");
+    } else return;
   };
 
   const deleteTask = function (id) {
@@ -66,6 +68,13 @@ function App() {
     if (window.confirm("Você está prestes a apagar toda a lista!")) {
       setList([]);
     }
+  };
+
+  const verifyInput = function () {
+    if (task === "") {
+      alert("Campo de tarefa vazio!");
+      return false;
+    } else return true;
   };
 
   return (
@@ -99,11 +108,18 @@ function App() {
                   />
                   <span></span>
                 </label>
-                <div className="task-text">{task.text}</div>
+                <div className="task-text">
+                  {task.completed === true ? <s>{task.text}</s> : task.text}
+                </div>
                 <div className="inputs-task-container"></div>
               </div>
               <div className="clear-task-container">
                 <button
+                  style={
+                    task.completed === true
+                      ? { backgroundColor: "rgb(230, 20, 20)" }
+                      : { backgroundColor: "blueviolet" }
+                  }
                   className="clear-task"
                   onClick={() => deleteTask(task.id)}
                 >
@@ -116,9 +132,9 @@ function App() {
         <div className="bottom-container">
           <div className="active-tasks">
             {notCompleted.length === 0
-              ? "Nenhuma tarefa ativa"
+              ? "Nenhuma tarefa ativa."
               : notCompleted.length === 1
-              ? "Você tem apenas 1 tarefa"
+              ? "Você tem apenas 1 tarefa ativa."
               : `Você tem ${notCompleted.length} tarefas ativas.`}
           </div>
           <div className="clearall-container">
