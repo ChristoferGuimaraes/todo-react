@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+
+import { FaTrashAlt } from "react-icons/fa";
 import "./App.css";
 
 function App() {
@@ -123,7 +125,7 @@ function App() {
                   className="clear-task"
                   onClick={() => deleteTask(task.id)}
                 >
-                  x
+                  <FaTrashAlt />
                 </button>
               </div>
             </div>

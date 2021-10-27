@@ -94,7 +94,7 @@
 }
 
 .clear-task {
-    font-size: 25px;
+    font-size: 18px;
     width: 40px;
     height: 40px;
     color: #fff;
@@ -104,7 +104,7 @@
     border-bottom-right-radius: 3px;
     cursor: pointer;
     transition: 0.5s;
-    padding-bottom: 3px;
+    padding-top: 3px;
 }
 
 .clear-task:hover {
@@ -120,7 +120,8 @@ footer {
     text-align: center;
     margin-top: 12px;
     font-size: 13px;
-    color: rgba(0, 0, 0, 0.767)
+    color: rgba(0, 0, 0, 0.767);
+    margin-bottom: 130px;
 }
 
 label:hover{
