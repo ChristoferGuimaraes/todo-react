@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { FaTrashAlt } from "react-icons/fa";
 import "./App.css";
 
@@ -7,6 +8,7 @@ function App() {
   const [list, setList] = useState([]);
   const [task, setTask] = useState("");
   const [notCompleted, setNotCompleted] = useState([]);
+  const notCompletedLen = String(notCompleted.length);
 
   useEffect(() => {
     notCompleted.length === 0
@@ -74,16 +76,22 @@ function App() {
 
   const verifyInput = function () {
     if (task === "") {
-      alert("Campo de tarefa vazio!");
+      notify('Campo de tarefas vazio!')
+      
       return false;
     } else return true;
   };
 
+  const notify = function (text) {
+    return toast.error(text, { position: toast.POSITION.TOP_CENTER });
+  };
+
   return (
-    <>
+    <div className="container">
+      <ToastContainer />
       <div className="main-container">
         <form onSubmit={handleSubmit}>
-          <div className="title">Lista de tarefas</div>
+          <div className="title">Lista de Tarefas</div>
           <div className="input-container">
             <input
               className="input-task"
@@ -133,11 +141,11 @@ function App() {
         </div>
         <div className="bottom-container">
           <div className="active-tasks">
-            {notCompleted.length === 0
+            {notCompletedLen === "0"
               ? "Nenhuma tarefa ativa."
-              : notCompleted.length === 1
+              : notCompletedLen === "1"
               ? "Você tem apenas 1 tarefa ativa."
-              : `Você tem ${notCompleted.length} tarefas ativas.`}
+              : `Você tem ${notCompletedLen} tarefas ativas.`}
           </div>
           <div className="clearall-container">
             <button
@@ -151,7 +159,7 @@ function App() {
         </div>
       </div>
       <footer>&copy; github.com/ChristoferGuimaraes</footer>
-    </>
+    </div>
   );
 }
 
