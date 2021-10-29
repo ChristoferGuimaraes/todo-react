@@ -1,0 +1,82 @@
+.modal-background {
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(90, 90, 90, 0.295);
+
+  position: absolute;
+}
+
+.modal-container {
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
+  padding: 17px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.212);
+  flex-direction: column;
+  position: relative;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 330px;
+
+}
+
+.body-modal {
+  color: rgba(0, 0, 0, 0.692);
+}
+
+.body-modal::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin-top: 23px;
+}
+
+.title-modal {
+  margin-bottom: 20px;
+  font-size: 26px;
+}
+
+.title-modal::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin-top: 10px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.yes-container {
+  margin-right: 8px;
+}
+
+.yes-button,
+.no-button {
+  padding: 8px 18px;
+  border: none;
+  background-color: blueviolet;
+  color: #fff;
+  border-radius: 3px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.yes-button:hover {
+  background-color: rgb(108, 28, 184);
+}
+
+.no-button {
+  background-color: rgb(241, 56, 56);
+}
+
+.no-button:hover {
+  background-color: rgb(204, 48, 48);
+}

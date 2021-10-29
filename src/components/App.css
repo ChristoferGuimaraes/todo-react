@@ -1,185 +1,189 @@
 .main-container {
-    border-radius: 6px;
-    padding: 19px;
-    max-width: 480px;
-    min-width: 300px;
-    margin: 0px auto;
-    margin-top: 130px;
-    background-color: #fff;
-    box-shadow: 0.5px 0.5px 5px rgba(0, 0, 0, 0.233);
+  position: absolute;
+  border-radius: 6px;
+  padding: 19px;
+  max-width: 480px;
+  min-width: 300px;
+  margin: 0px auto;
+  background-color: #fff;
+  box-shadow: 0.5px 0.5px 5px rgba(0, 0, 0, 0.233);
+  margin-top: 240px;
+  left: 0;
+  right: 0;
 }
 
 .input-container {
-    text-align: center;
-    display: flex;
-    margin-top: 25px;
+  text-align: center;
+  display: flex;
+  margin-top: 25px;
 }
 
 .input-task {
-    font-size: 17px;
-    width: 100%;
-    margin-right: 4px;
-    padding-left: 10px;
-    outline: none;
+  font-size: 17px;
+  width: 100%;
+  margin-right: 4px;
+  padding-left: 10px;
+  outline: none;
 }
 
 .title {
-    margin: 15px 0px;
-    font-size: 27px;
-    font-weight: bold;
+  margin: 15px 0px;
+  font-size: 27px;
+  font-weight: bold;
 }
 
 .add-new-task {
-    font-size: 30px;
-    padding: 0px 8px;
-    color: #fff;
-    background-color:blueviolet;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: 0.5s;
+  font-size: 30px;
+  padding: 0px 8px;
+  color: #fff;
+  background-color: blueviolet;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.5s;
 }
 
 .add-new-task:hover {
-    background-color:rgb(108, 28, 184);
+  background-color: rgb(108, 28, 184);
 }
 
 .task {
-    background-color: rgb(241, 241, 241);
-    margin: 5px 0px;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-    padding: 8px;
-    display: flex;
-    width: 100%
+  background-color: rgb(241, 241, 241);
+  margin: 5px 0px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  padding: 8px;
+  display: flex;
+  width: 100%;
 }
 
 .task-text {
-    padding-top: 1px;
-    padding-left: 10px;
-    font-size: 15px;
+  padding-top: 1px;
+  padding-left: 10px;
+  font-size: 15px;
 }
 
 .tasks-container {
-    margin-top: 18px;
+  margin-top: 18px;
 }
 
 .clearall-button {
-    padding: 6px 12px;
-    background-color:blueviolet;
+  padding: 6px 12px;
+  background-color: blueviolet;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.clearall-button:hover {
+  background-color: rgb(108, 28, 184);
+}
+
+.bottom-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 13px;
+}
+
+.active-tasks {
+  font-size: 15px;
+  margin-top: 3px;
+  display: inline-flex;
+  color: rgba(0, 0, 0, 0.767);
+}
+
+.clear-task-container {
+  padding-top: 5px;
+}
+
+.clear-task {
+  font-size: 16px;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  background-color: blueviolet;
+  border: none;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  cursor: pointer;
+  transition: 0.5s;
+  padding-top: 3px;
+}
+
+.unique-task-container {
+  display: flex;
+  width: 100%;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.767);
+  margin-bottom: 130px;
+  position:absolute;
+  left:0;
+  right: 0;
+}
+
+label:hover {
+  cursor: pointer;
+}
+
+label > input[type="checkbox"] {
+  display: none;
+}
+
+label > input[type="checkbox"] + span {
+  width: 20px;
+  height: 20px;
+  border: solid 2px rgb(115, 50, 175);
+  border-radius: 50px;
+  display: inline-block;
+  background-color: rgb(255, 255, 255);
+}
+
+label > input[type="checkbox"] + span:before {
+  content: "\2713";
+  font-size: 16px;
+  font-weight: bold;
+  color: transparent;
+  display: block;
+  text-align: center;
+}
+
+label > input[type="checkbox"]:checked + span:before {
+  color: blueviolet;
+}
+
+label > input[type="checkbox"] + span + span {
+  user-select: none;
+}
+
+@media (max-width: 900px) {
+  .main-container {
+    box-shadow: none;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 35px;
+  }
+
+  .clearall-button {
+    padding: 8px 15px;
+    background-color: blueviolet;
     color: #fff;
     border: none;
     border-radius: 3px;
     cursor: pointer;
     transition: 0.5s;
-}
-
-.clearall-button:hover {
-    background-color:rgb(108, 28, 184)
-}
-
-.bottom-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 13px;
-}
-
-.active-tasks {
-    font-size: 15px;
-    margin-top: 3px;
-    display:inline-flex;
-    color: rgba(0, 0, 0, 0.767);
-}
-
-.clear-task-container {
-    padding-top: 5px;
-}
-
-.clear-task {
     font-size: 16px;
-    width: 40px;
-    height: 40px;
-    color: #fff;
-    background-color:blueviolet;
-    border: none;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-    cursor: pointer;
-    transition: 0.5s;
-    padding-top: 3px;
+  }
+  .active-tasks {
+    margin-top: 9px;
+  }
 }
-
-.unique-task-container {
-    display: flex;
-    width: 100%
-}
-
-footer {
-    text-align: center;
-    margin-top: 12px;
-    font-size: 13px;
-    color: rgba(0, 0, 0, 0.767);
-    margin-bottom: 130px;
-}
-
-label:hover{
-    cursor:pointer;
-  }
-  
-  label > input[type=checkbox] {
-    display: none;
-  }
-  
-  label > input[type=checkbox] + span {
-    width: 20px;
-    height: 20px;
-    border: solid 2px rgb(115, 50, 175);
-    border-radius: 50px;
-    display: inline-block;
-    background-color: rgb(255, 255, 255)
-  }
-  
-  label > input[type=checkbox] + span:before {
-    content: '\2713';
-    font-size: 16px;
-    font-weight: bold;
-    color: transparent;
-    display: block;
-    text-align: center;
-  }
-  
-  label > input[type=checkbox]:checked + span:before {
-    color: blueviolet;
-  }
-  
-  label > input[type=checkbox] + span + span {
-    user-select: none;
-  }
-
-  @media (max-width: 900px) {
-
-    .main-container {
-        box-shadow: none; 
-    }
-    
-    .title {
-        text-align: center;
-        font-size: 28px;
-        margin-bottom: 35px;
-    }
-
-    .clearall-button {
-        padding: 8px 15px;
-        background-color:blueviolet;
-        color: #fff;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        transition: 0.5s;
-        font-size: 16px;
-    }
-    .active-tasks {
-        margin-top: 9px;
-    }
-  }
-
