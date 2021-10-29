@@ -87,10 +87,14 @@ function App() {
     setOpenModal(false);
   };
 
+  const selectedModal = function () {
+    setList(notCompleted);
+    setOpenModal(false);
+  };
+
   return (
     <>
       <div className="container">
-        <ToastContainer />
         <div className="main-container">
           <form onSubmit={handleSubmit}>
             <div className="title">Lista de Tarefas</div>
@@ -159,13 +163,17 @@ function App() {
               </button>
             </div>
           </div>
-        <footer>&copy; github.com/ChristoferGuimaraes</footer>
+          <footer>&copy; github.com/ChristoferGuimaraes</footer>
         </div>
-        
       </div>
       {openModal && (
-        <Modal cancelModal={setOpenModal} confirmModal={confirmModal} />
+        <Modal
+          cancelModal={setOpenModal}
+          confirmModal={confirmModal}
+          selectedModal={selectedModal}
+        />
       )}
+      <ToastContainer />
     </>
   );
 }

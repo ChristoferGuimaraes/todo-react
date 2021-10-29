@@ -18,7 +18,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 330px;
-
 }
 
 .body-modal {
@@ -54,12 +53,17 @@
   margin-top: 16px;
 }
 
-.yes-container {
-  margin-right: 8px;
+.all-container {
+  margin-left: 6px;
 }
 
-.yes-button,
-.no-button {
+.cancel-container {
+  margin-left: 6px;
+}
+
+.all-button,
+.cancel-button,
+.selected-button {
   padding: 8px 18px;
   border: none;
   background-color: blueviolet;
@@ -67,16 +71,34 @@
   border-radius: 3px;
   transition: 0.3s;
   cursor: pointer;
+  font-weight:bold;
 }
 
-.yes-button:hover {
+.selected-button {
+    background-color: indigo;
+}
+
+.selected-button:hover {
+    background-color: rgb(97, 2, 165);
+}
+
+.all-button:hover {
   background-color: rgb(108, 28, 184);
 }
 
-.no-button {
+.cancel-button {
   background-color: rgb(241, 56, 56);
 }
 
-.no-button:hover {
+.cancel-button:hover {
   background-color: rgb(204, 48, 48);
+}
+
+@media (max-width: 900px) {
+  .all-button,
+  .cancel-button,
+  .selected-button {
+    padding: 8px 18px;
+    font-size: 17px;
+  }
 }
