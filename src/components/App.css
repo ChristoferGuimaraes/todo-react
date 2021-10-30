@@ -1,15 +1,20 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    position:absolute;
+}
+
 .main-container {
-  position: absolute;
   border-radius: 6px;
   padding: 19px;
-  max-width: 480px;
-  min-width: 300px;
-  margin: 0px auto;
   background-color: #fff;
   box-shadow: 0.5px 0.5px 5px rgba(0, 0, 0, 0.233);
-  margin-top: 240px;
-  left: 0;
-  right: 0;
+  flex-direction: column;
+  position: relative;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
 }
 
 .input-container {
@@ -162,10 +167,11 @@ label > input[type="checkbox"] + span + span {
   user-select: none;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   .main-container {
     box-shadow: none;
-  }
+    width: 450px;
+}
 
   .title {
     text-align: center;
@@ -175,15 +181,17 @@ label > input[type="checkbox"] + span + span {
 
   .clearall-button {
     padding: 8px 15px;
-    background-color: blueviolet;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: 0.5s;
     font-size: 16px;
   }
   .active-tasks {
     margin-top: 9px;
   }
+}
+
+@media (max-width: 500px) {
+    .main-container {
+        box-shadow: none;
+        width: 330px;
+    }
+
 }

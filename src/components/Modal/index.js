@@ -6,11 +6,11 @@ function Modal({cancelModal, confirmModal, selectedModal}) {
     <div className="modal-background">
       <div className="modal-container">
         <div>
-          <h1 className="title-modal"> Apagar todas as tarefas? </h1>
+          <h1 className="title-modal"> Apagar tarefas? </h1>
         </div>
         <div className="body-modal">
           <p>
-            Deseja apagar apenas as tarefas <b>concluídas</b>, <b>tudo</b>, ou <b>cancelar</b>?
+            Deseja apagar somente as tarefas <b>concluídas</b>, <b>tudo</b>, ou <b>cancelar</b>?
           </p>
         </div>
         <div className="footer">
@@ -18,7 +18,7 @@ function Modal({cancelModal, confirmModal, selectedModal}) {
               <button className="selected-button" onClick={() => selectedModal(true)}>Concluídas</button>
           </div>
           <div className="all-container">
-            <button className="all-button" onClick={() => confirmModal(true)}>Tudo</button>
+            <button className="all-button" onClick={() => confirmModal(true)}>Todas</button>
           </div>
           
           
