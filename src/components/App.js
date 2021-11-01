@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { FaTrashAlt } from "react-icons/fa";
-import "./App.css";
 import Modal from "./Modal/index.js";
+import "./App.css";
+
+import "react-toastify/dist/ReactToastify.css";
+import { VscSaveAs } from "react-icons/vsc"
+import { ToastContainer, toast } from "react-toastify";
+import { FaTrashAlt } from "react-icons/fa";
+import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 
 function App() {
   const [list, setList] = useState([]);
   const [task, setTask] = useState("");
   const [notCompleted, setNotCompleted] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [description, setDescription] = useState("");
   const notCompletedLen = String(notCompleted.length);
 
   useEffect(() => {
@@ -46,10 +50,13 @@ function App() {
       const newTask = {
         id: 1 + Math.random(),
         text: task,
+        description: "",
+        toggle: false,
         completed: false,
       };
 
       setList([...list].concat(newTask));
+      setDescription("");
       setTask("");
     } else return;
   };
@@ -92,6 +99,30 @@ function App() {
     setOpenModal(false);
   };
 
+  const openDescription = function (id) {
+    const updatedList = [...list].map((task) => {
+      if (task.id === id) {
+        task.toggle = !task.toggle;
+      }
+
+      return task;
+    });
+
+    setList(updatedList);
+  };
+
+  function saveDescription(id) {
+    const updatedList = [...list].map((task) => {
+      if (task.id === id) {
+        task.description = description;
+        task.toggle = !task.toggle;
+      }
+      return task;
+    });
+    setList(updatedList);
+    setDescription('')
+  }
+
   return (
     <>
       <div className="container">
@@ -114,33 +145,72 @@ function App() {
           </form>
           <div className="tasks-container">
             {list.map((task) => (
-              <div className="unique-task-container" key={task.id}>
-                <div className="task">
-                  <label>
-                    <input
-                      type="checkbox"
-                      onChange={() => checkComplete(task.id)}
-                      checked={task.completed}
-                    />
-                    <span></span>
-                  </label>
-                  <div className="task-text">
-                    {task.completed === true ? <s>{task.text}</s> : task.text}
+              <div key={task.id}>
+                <div>
+                  <div className="unique-task-container">
+                    <div className="task">
+                      <div className="checkbox-and-text">
+                        <label>
+                          <input
+                            type="checkbox"
+                            onChange={() => checkComplete(task.id)}
+                            checked={task.completed}
+                          />
+                          <span></span>
+                        </label>
+                        <div className="task-text">
+                          {task.completed === true ? (
+                            <s>{task.text}</s>
+                          ) : (
+                            task.text
+                          )}
+                        </div>
+                      </div>
+                      <div className="inputs-task-container"></div>
+                      <button
+                        className="description-toggle"
+                        onClick={() => openDescription(task.id)}
+                      >
+                        {task.toggle === true ? (
+                          <BiChevronUp />
+                        ) : (
+                          <BiChevronDown />
+                        )}
+                        {console.log(list)}
+                      </button>
+                    </div>
+                    <div className="clear-task-container">
+                      <button
+                        style={
+                          task.completed === true
+                            ? { backgroundColor: "rgb(230, 20, 20)" }
+                            : { backgroundColor: "blueviolet" }
+                        }
+                        className="clear-task"
+                        onClick={() => deleteTask(task.id)}
+                      >
+                        <FaTrashAlt />
+                      </button>
+                    </div>
                   </div>
-                  <div className="inputs-task-container"></div>
-                </div>
-                <div className="clear-task-container">
-                  <button
-                    style={
-                      task.completed === true
-                        ? { backgroundColor: "rgb(230, 20, 20)" }
-                        : { backgroundColor: "blueviolet" }
-                    }
-                    className="clear-task"
-                    onClick={() => deleteTask(task.id)}
-                  >
-                    <FaTrashAlt />
-                  </button>
+                  {task.toggle === true && (
+                    <div>
+                      <div className="description-container">
+                        <textarea
+                          onChange={(e) => setDescription(e.target.value)}
+                          defaultValue={task.description}
+                          spellcheck="false"
+                        />
+                        <div className="save-description-container">
+                        <button className="save-description" onClick={() => saveDescription(task.id)}>
+                          <VscSaveAs />
+                        </button>
+                        </div>
+                      </div>
+                    
+                    </div>
+                    
+                  )}
                 </div>
               </div>
             ))}

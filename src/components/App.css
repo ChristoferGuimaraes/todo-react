@@ -1,7 +1,7 @@
 .container {
-    width: 100vw;
-    height: 100vh;
-    position:absolute;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
 }
 
 .main-container {
@@ -14,7 +14,7 @@
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 450px;
+  width: 500px;
 }
 
 .input-container {
@@ -60,6 +60,7 @@
   padding: 8px;
   display: flex;
   width: 100%;
+  justify-content: space-between;
 }
 
 .task-text {
@@ -70,6 +71,12 @@
 
 .tasks-container {
   margin-top: 18px;
+  display: grid;
+}
+
+.checkbox-and-text {
+  display: flex;
+  justify-content: space-between;
 }
 
 .clearall-button {
@@ -120,6 +127,62 @@
 .unique-task-container {
   display: flex;
   width: 100%;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+.description-toggle {
+  font-size: 25px;
+  color: rgb(153, 153, 153);
+  cursor: pointer;
+  border: none;
+
+  height: 0px;
+}
+
+.text-area {
+  width: 450px;
+}
+
+.description-container {
+  width: 100%;
+  display: flex;
+  border: none;
+  height: 93px;
+  background-color: rgb(241, 241, 241);
+  margin-bottom: 14px;
+  border-radius: 3px;
+  margin-top: -1px;
+  transition: filter 0.3s ease 0.3s;
+}
+
+.save-description {
+  font-size: 21px;
+  width: 40px;
+  height: 100%;
+  color: #fff;
+  background-color: blueviolet;
+  border: none;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  cursor: pointer;
+  transition: 0.5s;
+  padding-top: 3px;
+  text-align: center;
+}
+
+textarea {
+  width: 100%;
+  font-size: 14.5px;
+  background-color: rgb(241, 241, 241);
+  display: flex;
+  justify-content: center;
+  height: 70px;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 10px;
+  border-radius: 3px;
 }
 
 footer {
@@ -128,8 +191,8 @@ footer {
   font-size: 13px;
   color: rgba(0, 0, 0, 0.767);
   margin-bottom: 130px;
-  position:absolute;
-  left:0;
+  position: absolute;
+  left: 0;
   right: 0;
 }
 
@@ -171,7 +234,7 @@ label > input[type="checkbox"] + span + span {
   .main-container {
     box-shadow: none;
     width: 450px;
-}
+  }
 
   .title {
     text-align: center;
@@ -189,9 +252,8 @@ label > input[type="checkbox"] + span + span {
 }
 
 @media (max-width: 500px) {
-    .main-container {
-        box-shadow: none;
-        width: 330px;
-    }
-
+  .main-container {
+    box-shadow: none;
+    width: 336px;
+  }
 }
