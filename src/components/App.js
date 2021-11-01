@@ -176,7 +176,6 @@ function App() {
                         ) : (
                           <BiChevronDown />
                         )}
-                        {console.log(list)}
                       </button>
                     </div>
                     <div className="clear-task-container">
@@ -199,7 +198,7 @@ function App() {
                         <textarea
                           onChange={(e) => setDescription(e.target.value)}
                           defaultValue={task.description}
-                          spellcheck="false"
+                          spellCheck="false"
                         />
                         <div className="save-description-container">
                         <button className="save-description" onClick={() => saveDescription(task.id)}>
