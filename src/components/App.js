@@ -3,7 +3,7 @@ import Modal from "./Modal/index.js";
 import "./App.css";
 
 import "react-toastify/dist/ReactToastify.css";
-import { VscSaveAs } from "react-icons/vsc"
+import { VscSaveAs } from "react-icons/vsc";
 import { ToastContainer, toast } from "react-toastify";
 import { FaTrashAlt } from "react-icons/fa";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
@@ -79,14 +79,18 @@ function App() {
 
   const verifyInput = function () {
     if (task === "") {
-      notify("Campo de tarefas vazio!");
+      invalidInput("Campo de tarefas vazio");
 
       return false;
     } else return true;
   };
 
-  const notify = function (text) {
+  const invalidInput = function (text) {
     return toast.error(text, { position: toast.POSITION.TOP_CENTER });
+  };
+
+  const saveNotify = function (text) {
+    return toast.success(text, { position: toast.POSITION.BOTTOM_LEFT });
   };
 
   const confirmModal = function () {
@@ -116,11 +120,16 @@ function App() {
       if (task.id === id) {
         task.description = description;
         task.toggle = !task.toggle;
+        if (task.text.length >= 10) {
+          saveNotify(`Tarefa "${task.text.substr(0, 10)}..." atualizada`);
+        } else saveNotify(`Tarefa "${task.text}" atualizada`);
       }
+
       return task;
     });
     setList(updatedList);
-    setDescription('')
+
+    setDescription("");
   }
 
   return (
@@ -128,7 +137,10 @@ function App() {
       <div className="container">
         <div className="main-container">
           <form onSubmit={handleSubmit}>
-            <div className="title">Lista de Tarefas</div>
+            <div className="title-container">
+              <span className="title">Lista de Tarefas</span>
+              <span className="version">v.1.0.1</span>
+            </div>
             <div className="input-container">
               <input
                 className="input-task"
@@ -158,7 +170,14 @@ function App() {
                           />
                           <span></span>
                         </label>
-                        <div className="task-text">
+                        <div
+                          className="task-text"
+                          style={
+                            task.completed === true
+                              ? { color: "rgba(0, 0, 0, 0.582)" }
+                              : { color: "black" }
+                          }
+                        >
                           {task.completed === true ? (
                             <s>{task.text}</s>
                           ) : (
@@ -199,16 +218,28 @@ function App() {
                           onChange={(e) => setDescription(e.target.value)}
                           defaultValue={task.description}
                           spellCheck="false"
+                          placeholder="Insira mais detalhes da tarefa"
+                          style={
+                            task.completed === true
+                              ? { color: "rgba(0, 0, 0, 0.582)" }
+                              : { color: "black" }
+                          }
                         />
                         <div className="save-description-container">
-                        <button className="save-description" onClick={() => saveDescription(task.id)}>
-                          <VscSaveAs />
-                        </button>
+                          <button
+                            className="save-description"
+                            onClick={() => saveDescription(task.id)}
+                            style={
+                              task.completed === true
+                                ? { backgroundColor: "rgb(230, 20, 20)" }
+                                : { backgroundColor: "blueviolet" }
+                            }
+                          >
+                            <VscSaveAs />
+                          </button>
                         </div>
                       </div>
-                    
                     </div>
-                    
                   )}
                 </div>
               </div>
