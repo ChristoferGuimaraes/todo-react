@@ -79,6 +79,21 @@
   justify-content: space-between;
 }
 
+.no-task-field-container {
+  width: 100%;
+  padding: 8px 0px;
+  background-color: rgb(241, 241, 241);
+  border-radius: 3px;
+  margin: 20px 0px;
+  text-align: left;
+}
+
+.no-task-field-container span {
+  padding-left: 14px;
+  color: rgba(136, 136, 136, 0.829);
+  font-size: 14px;
+}
+
 .task-text {
   padding-top: 1px;
   padding-left: 10px;

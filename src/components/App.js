@@ -90,7 +90,7 @@ function App() {
 
   const verifyInput = function () {
     if (task === "") {
-      invalidInput("Campo de tarefas vazio");
+      invalidInput("Adicione alguma tarefa");
 
       return false;
     } else return true;
@@ -131,7 +131,7 @@ function App() {
       if (task.id === id) {
         task.description = description;
         task.toggle = !task.toggle;
-        if (task.text.length >= 10) {
+        if (task.text.length > 10) {
           saveNotify(`Tarefa "${task.text.substr(0, 10)}..." atualizada`);
         } else saveNotify(`Tarefa "${task.text}" atualizada`);
       }
@@ -150,7 +150,7 @@ function App() {
           <form onSubmit={handleSubmit}>
             <div className="title-container">
               <span className="title">Lista de Tarefas</span>
-              <span className="version">v.1.0.2</span>
+              <span className="version">v.1.0.3</span>
             </div>
             <div className="input-container">
               <input
@@ -159,109 +159,114 @@ function App() {
                 onChange={(e) => setTask(e.target.value)}
                 value={task}
                 placeholder="Adicione uma nova tarefa"
-                maxLength="35"
+                maxLength="30"
               />
               <button className="add-new-task" type="submit">
                 +
               </button>
             </div>
           </form>
-          <div className="tasks-container">
-            {list.map((task) => (
-              <div key={task.id}>
-                <div>
-                  <div className="unique-task-container">
-                    <div className="task">
-                      <div className="checkbox-and-text">
-                        <label>
-                          <input
-                            type="checkbox"
-                            onChange={() => checkComplete(task.id)}
-                            checked={task.completed}
-                          />
-                          <span></span>
-                        </label>
-                        <div
-                          className="task-text"
-                          style={
-                            task.completed === true
-                              ? { color: "rgba(0, 0, 0, 0.582)" }
-                              : { color: "black" }
-                          }
-                        >
-                          {task.completed === true ? (
-                            <s>{task.text}</s>
-                          ) : (
-                            task.text
-                          )}
-                        </div>
-                      </div>
-                      <div className="inputs-task-container"></div>
-                      <button
-                        className="description-toggle"
-                        onClick={() => openDescription(task.id)}
-                      >
-                        {task.toggle === true ? (
-                          <BiChevronUp />
-                        ) : (
-                          <BiChevronDown />
-                        )}
-                      </button>
-                    </div>
-                    <div className="clear-task-container">
-                      <button
-                        style={
-                          task.completed === true
-                            ? { backgroundColor: "rgb(230, 20, 20)" }
-                            : { backgroundColor: "blueviolet" }
-                        }
-                        className="clear-task"
-                        onClick={() => deleteTask(task.id)}
-                      >
-                        <FaTrashAlt />
-                      </button>
-                    </div>
-                  </div>
-                  {task.toggle === true && (
-                    <div>
-                      <div className="description-container">
-                        <textarea
-                          onChange={(e) => setDescription(e.target.value)}
-                          defaultValue={task.description}
-                          spellCheck="false"
-                          placeholder="Insira mais detalhes da tarefa"
-                          style={
-                            task.completed === true
-                              ? { color: "rgba(0, 0, 0, 0.582)" }
-                              : { color: "black" }
-                          }
-                        />
-                        <div className="save-description-container">
-                          <button
-                            className="save-description"
-                            onClick={() => saveDescription(task.id)}
+          {list.length === 0 ? (
+            <div className="no-task-field-container"><span><i>Campo de tarefas vazio.</i></span></div>
+          ) : (
+            <div className="tasks-container">
+              {list.map((task) => (
+                <div key={task.id}>
+                  <div>
+                    <div className="unique-task-container">
+                      <div className="task">
+                        <div className="checkbox-and-text">
+                          <label>
+                            <input
+                              type="checkbox"
+                              onChange={() => checkComplete(task.id)}
+                              checked={task.completed}
+                            />
+                            <span></span>
+                          </label>
+                          <div
+                            className="task-text"
                             style={
                               task.completed === true
-                                ? { backgroundColor: "rgb(230, 20, 20)" }
-                                : { backgroundColor: "blueviolet" }
+                                ? { color: "rgba(0, 0, 0, 0.582)" }
+                                : { color: "black" }
                             }
                           >
-                            <VscSaveAs />
-                          </button>
+                            {task.completed === true ? (
+                              <s>{task.text}</s>
+                            ) : (
+                              task.text
+                            )}
+                          </div>
                         </div>
+                        <div className="inputs-task-container"></div>
+                        <button
+                          className="description-toggle"
+                          onClick={() => openDescription(task.id)}
+                        >
+                          {task.toggle === true ? (
+                            <BiChevronUp />
+                          ) : (
+                            <BiChevronDown />
+                          )}
+                        </button>
+                      </div>
+                      <div className="clear-task-container">
+                        <button
+                          style={
+                            task.completed === true
+                              ? { backgroundColor: "rgb(230, 20, 20)" }
+                              : { backgroundColor: "blueviolet" }
+                          }
+                          className="clear-task"
+                          onClick={() => deleteTask(task.id)}
+                        >
+                          <FaTrashAlt />
+                        </button>
                       </div>
                     </div>
-                  )}
+                    {task.toggle === true && (
+                      <div>
+                        <div className="description-container">
+                          <textarea
+                            onChange={(e) => setDescription(e.target.value)}
+                            defaultValue={task.description}
+                            spellCheck="false"
+                            placeholder="Insira mais detalhes da tarefa"
+                            style={
+                              task.completed === true
+                                ? { color: "rgba(0, 0, 0, 0.582)" }
+                                : { color: "black" }
+                            }
+                          />
+                          <div className="save-description-container">
+                            <button
+                              className="save-description"
+                              onClick={() => saveDescription(task.id)}
+                              style={
+                                task.completed === true
+                                  ? { backgroundColor: "rgb(230, 20, 20)" }
+                                  : { backgroundColor: "blueviolet" }
+                              }
+                            >
+                              <VscSaveAs />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
+
           <div className="bottom-container">
             <div className="active-tasks">
               {notCompletedLen === "0"
                 ? "Nenhuma tarefa ativa."
                 : notCompletedLen === "1"
-                ? "Você tem apenas 1 tarefa ativa."
+                ? "Você tem 1 tarefa ativa."
                 : `Você tem ${notCompletedLen} tarefas ativas.`}
             </div>
             <div className="undone-clear-container">
@@ -284,6 +289,11 @@ function App() {
       </div>
       {openModal && (
         <Modal
+          title={"Apagar tarefas?"}
+          body={`Deseja apagar as tarefas 'Concluídas', 'Todas', ou 'Cancelar'?`}
+          btnSelected={"Concluídas"}
+          btnAll={"Todas"}
+          btnCancel={"Cancelar"}
           cancelModal={setOpenModal}
           confirmModal={confirmModal}
           selectedModal={selectedModal}
