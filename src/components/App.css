@@ -21,19 +21,21 @@
   text-align: center;
   display: flex;
   margin-top: 25px;
-
 }
 
 .input-task {
-  font-size: 17px;
+  font-size: 14px;
   width: 100%;
   margin-right: 4px;
   padding-left: 10px;
   outline: none;
+  border: none;
+  border: 0.5px solid black;
+  border-radius: 4px;
 }
 
 .title-container {
-  display:flex;
+  display: flex;
   margin: 10px 0px;
 }
 
@@ -60,7 +62,9 @@
   transition: 0.5s;
 }
 
-.add-new-task:hover {
+.add-new-task:hover,
+.clearall-button:hover,
+.undone-button:hover {
   background-color: rgb(108, 28, 184);
 }
 
@@ -79,7 +83,6 @@
   padding-top: 1px;
   padding-left: 10px;
   font-size: 15px;
-  
 }
 
 .tasks-container {
@@ -102,8 +105,20 @@
   transition: 0.5s;
 }
 
-.clearall-button:hover {
-  background-color: rgb(108, 28, 184);
+.undone-clear-container {
+  display: flex;
+}
+
+.undone-button {
+  border: none;
+  background-color: blueviolet;
+  padding: 0px 10px;
+  cursor: pointer;
+  font-size: 19px;
+  border-radius: 3px;
+  margin-right: 9px;
+  color: #fff;
+  padding-top: 3px;
 }
 
 .bottom-container {
@@ -250,11 +265,19 @@ label > input[type="checkbox"] + span + span {
   .title {
     font-size: 28px;
   }
-  
+
   .title-container {
     text-align: center;
     margin-bottom: 35px;
     display: block;
+  }
+
+  .input-task {
+    font-size: 16px;
+  }
+
+  .undone-button {
+    margin-right: 5px;
   }
 
   .clearall-button {
@@ -269,6 +292,17 @@ label > input[type="checkbox"] + span + span {
 @media (max-width: 500px) {
   .main-container {
     box-shadow: none;
-    width: 336px;
+    width: 337px;
+  }
+
+  .input-task {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 290px) {
+  .main-container {
+    box-shadow: none;
+    width: 282px;
   }
 }

@@ -69,15 +69,15 @@
   border-radius: 3px;
   transition: 0.3s;
   cursor: pointer;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 .selected-button {
-    background-color: indigo;
+  background-color: indigo;
 }
 
 .selected-button:hover {
-    background-color: rgb(112, 1, 192);
+  background-color: rgb(112, 1, 192);
 }
 
 .all-button:hover {
@@ -110,10 +110,21 @@
 }
 
 @media (max-width: 500px) {
-
   .modal-container {
-    
-    width: 333px
+    width: 333px;
+  }
+}
+
+@media (max-width: 390px) {
+  .modal-container {
+    width: 280px;
   }
 
+  .all-button,
+  .cancel-button,
+  .selected-button {
+    padding: 6px 12px;
+    font-size: 17px;
+    font-weight: normal;
+  }
 }

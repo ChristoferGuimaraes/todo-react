@@ -7,6 +7,7 @@ import { VscSaveAs } from "react-icons/vsc";
 import { ToastContainer, toast } from "react-toastify";
 import { FaTrashAlt } from "react-icons/fa";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
+import { RiArrowGoBackFill } from "react-icons/ri";
 
 function App() {
   const [list, setList] = useState([]);
@@ -14,6 +15,7 @@ function App() {
   const [notCompleted, setNotCompleted] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [description, setDescription] = useState("");
+  const [temp, setTemp] = useState("");
   const notCompletedLen = String(notCompleted.length);
 
   useEffect(() => {
@@ -23,8 +25,8 @@ function App() {
   });
 
   useEffect(() => {
-    const temp = localStorage.getItem("list");
-    const loadedList = JSON.parse(temp);
+    const tempLocal = localStorage.getItem("list");
+    const loadedList = JSON.parse(tempLocal);
 
     if (loadedList) {
       setList(loadedList);
@@ -32,8 +34,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const temp = JSON.stringify(list);
-    localStorage.setItem("list", temp);
+    const tempLocal = JSON.stringify(list);
+    localStorage.setItem("list", tempLocal);
   }, [list]);
 
   useEffect(() => {
@@ -63,8 +65,17 @@ function App() {
 
   const deleteTask = function (id) {
     const updatedList = [...list].filter((task) => task.id !== id);
-
     setList(updatedList);
+
+    const updatedTemp = [...list].filter((task) => task.id === id);
+    setTemp(updatedTemp);
+  };
+
+  const undoneTask = function () {
+    if (temp !== "") {
+      setList([...list].concat(temp));
+    }
+    setTemp("");
   };
 
   const checkComplete = function (id) {
@@ -139,7 +150,7 @@ function App() {
           <form onSubmit={handleSubmit}>
             <div className="title-container">
               <span className="title">Lista de Tarefas</span>
-              <span className="version">v.1.0.1</span>
+              <span className="version">v.1.0.2</span>
             </div>
             <div className="input-container">
               <input
@@ -253,14 +264,19 @@ function App() {
                 ? "Você tem apenas 1 tarefa ativa."
                 : `Você tem ${notCompletedLen} tarefas ativas.`}
             </div>
-            <div className="clearall-container">
-              <button
-                className="clearall-button"
-                onClick={() => setOpenModal(true)}
-                type="button"
-              >
-                Limpar
+            <div className="undone-clear-container">
+              <button className="undone-button" onClick={undoneTask}>
+                <RiArrowGoBackFill />
               </button>
+              <div className="clearall-container">
+                <button
+                  className="clearall-button"
+                  onClick={() => setOpenModal(true)}
+                  type="button"
+                >
+                  Limpar
+                </button>
+              </div>
             </div>
           </div>
           <footer>&copy; github.com/ChristoferGuimaraes</footer>

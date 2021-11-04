@@ -10,7 +10,7 @@ function Modal({cancelModal, confirmModal, selectedModal}) {
         </div>
         <div className="body-modal">
           <p>
-            Deseja apagar somente as tarefas <b>concluídas</b>, <b>tudo</b>, ou <b>cancelar</b>?
+            Deseja apagar somente as tarefas <b>Concluídas</b>, <b>Todas</b>, ou <b>Cancelar</b>?
           </p>
         </div>
         <div className="footer">
