@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Modal from "./Modal/index.js";
+import InputText from "./InputText/index.js";
 import "./App.css";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -150,12 +151,11 @@ function App() {
           <form onSubmit={handleSubmit}>
             <div className="title-container">
               <span className="title">Lista de Tarefas</span>
-              <span className="version">v.1.0.3</span>
+              <span className="version">v.1.0.4</span>
             </div>
             <div className="input-container">
-              <input
+              <InputText
                 className="input-task"
-                type="text"
                 onChange={(e) => setTask(e.target.value)}
                 value={task}
                 placeholder="Adicione uma nova tarefa"
@@ -167,7 +167,11 @@ function App() {
             </div>
           </form>
           {list.length === 0 ? (
-            <div className="no-task-field-container"><span><i>Campo de tarefas vazio.</i></span></div>
+            <div className="no-task-field-container">
+              <span>
+                <i>Campo de tarefas vazio.</i>
+              </span>
+            </div>
           ) : (
             <div className="tasks-container">
               {list.map((task) => (
