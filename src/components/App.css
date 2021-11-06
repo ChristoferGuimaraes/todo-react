@@ -179,11 +179,20 @@
   width: 100%;
   display: flex;
   border: none;
-  height: 93px;
   background-color: rgb(241, 241, 241);
   margin-bottom: 14px;
   border-radius: 3px;
   margin-top: -1px;
+}
+
+#description-container-toggle {
+  height: 0px;
+  overflow: hidden;
+  transition: 300ms;
+}
+
+#description-container-toggle.active {
+  height: 100px;
 }
 
 .save-description {

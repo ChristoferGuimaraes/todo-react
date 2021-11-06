@@ -56,6 +56,7 @@ function App() {
         description: "",
         toggle: false,
         completed: false,
+        toggleTransition: "inactive",
       };
 
       setList([...list].concat(newTask));
@@ -119,11 +120,15 @@ function App() {
     const updatedList = [...list].map((task) => {
       if (task.id === id) {
         task.toggle = !task.toggle;
+        if (task.toggle === true) {
+          task.toggleTransition = "active";
+        } else {
+          task.toggleTransition = "inactive";
+        }
       }
 
       return task;
     });
-
     setList(updatedList);
   };
 
@@ -151,7 +156,7 @@ function App() {
           <form onSubmit={handleSubmit}>
             <div className="title-container">
               <span className="title">Lista de Tarefas</span>
-              <span className="version">v.1.0.4</span>
+              <span className="version">v.1.0.5</span>
             </div>
             <div className="input-container">
               <InputText
@@ -229,36 +234,37 @@ function App() {
                         </button>
                       </div>
                     </div>
-                    {task.toggle === true && (
-                      <div>
-                        <div className="description-container">
-                          <textarea
-                            onChange={(e) => setDescription(e.target.value)}
-                            defaultValue={task.description}
-                            spellCheck="false"
-                            placeholder="Insira mais detalhes da tarefa"
+                    <div
+                      id="description-container-toggle"
+                      className={task.toggleTransition}
+                    >
+                      <div className="description-container">
+                        <textarea
+                          onChange={(e) => setDescription(e.target.value)}
+                          defaultValue={task.description}
+                          spellCheck="false"
+                          placeholder="Insira mais detalhes da tarefa"
+                          style={
+                            task.completed === true
+                              ? { color: "rgba(0, 0, 0, 0.582)" }
+                              : { color: "black" }
+                          }
+                        />
+                        <div className="save-description-container">
+                          <button
+                            className="save-description"
+                            onClick={() => saveDescription(task.id)}
                             style={
                               task.completed === true
-                                ? { color: "rgba(0, 0, 0, 0.582)" }
-                                : { color: "black" }
+                                ? { backgroundColor: "rgb(230, 20, 20)" }
+                                : { backgroundColor: "blueviolet" }
                             }
-                          />
-                          <div className="save-description-container">
-                            <button
-                              className="save-description"
-                              onClick={() => saveDescription(task.id)}
-                              style={
-                                task.completed === true
-                                  ? { backgroundColor: "rgb(230, 20, 20)" }
-                                  : { backgroundColor: "blueviolet" }
-                              }
-                            >
-                              <VscSaveAs />
-                            </button>
-                          </div>
+                          >
+                            <VscSaveAs />
+                          </button>
                         </div>
                       </div>
-                    )}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -294,7 +300,12 @@ function App() {
       {openModal && (
         <Modal
           title={"Apagar tarefas?"}
-          body={`Deseja apagar as tarefas 'Concluídas', 'Todas', ou 'Cancelar'?`}
+          body={
+            <span>
+              Deseja apagar as tarefas <b>Concluídas</b>, <b>Todas</b>, ou{" "}
+              <b>Cancelar</b>?
+            </span>
+          }
           btnSelected={"Concluídas"}
           btnAll={"Todas"}
           btnCancel={"Cancelar"}
