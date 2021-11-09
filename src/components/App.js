@@ -69,16 +69,15 @@ function App() {
     const updatedList = [...list].filter((task) => task.id !== id);
     setList(updatedList);
 
-    const updatedTemp = [...list].filter((task) => task.id === id);
+    const updatedTemp = list;
     setTemp(updatedTemp);
   };
 
   const undoneTask = function () {
     if (temp !== "") {
-      setList([...list].concat(temp));
+      setList(temp);
     }
     setTemp("");
-    console.log(list);
   };
 
   const checkComplete = function (id) {
@@ -134,10 +133,6 @@ function App() {
     setList(updatedList);
   };
 
-  const handleDescriptionChange = function (event) {
-    setDescription(event.target.value);
-  };
-
   const saveDescription = function (id) {
     const updatedList = [...list].map((task) => {
       if (task.id === id) {
@@ -167,7 +162,7 @@ function App() {
           <form onSubmit={handleSubmit}>
             <div className="title-container">
               <span className="title">Lista de Tarefas</span>
-              <span className="version">v.1.0.6</span>
+              <span className="version">v.1.0.7</span>
             </div>
             <div className="input-container">
               <InputText
@@ -256,7 +251,7 @@ function App() {
                     >
                       <div className="description-container">
                         <textarea
-                          onChange={(e) => handleDescriptionChange(e)}
+                          onChange={(e) => setDescription(e.target.value)}
                           defaultValue={task.description}
                           spellCheck="false"
                           placeholder="Insira mais detalhes da tarefa"
