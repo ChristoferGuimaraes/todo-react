@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Modal from "./Modal/index.js";
 import InputText from "./InputText/index.js";
 import "./App.css";
-
 import "react-toastify/dist/ReactToastify.css";
 import { VscSaveAs } from "react-icons/vsc";
 import { ToastContainer, toast } from "react-toastify";
@@ -155,6 +154,10 @@ function App() {
     });
   };
 
+  const disableElement = function (task) {
+    return task.completed === true ? true : false;
+  };
+
   return (
     <>
       <div className="container">
@@ -162,7 +165,7 @@ function App() {
           <form onSubmit={handleSubmit}>
             <div className="title-container">
               <span className="title">Lista de Tarefas</span>
-              <span className="version">v.1.0.7</span>
+              <span className="version">v.1.0.6</span>
             </div>
             <div className="input-container">
               <InputText
@@ -203,7 +206,7 @@ function App() {
                             className="task-text"
                             style={
                               task.completed === true
-                                ? { color: "rgba(0, 0, 0, 0.582)" }
+                                ? { color: "rgba(0, 0, 0, 0.682)" }
                                 : { color: "black" }
                             }
                           >
@@ -228,13 +231,16 @@ function App() {
                       </div>
                       <div className="clear-task-container">
                         <button
-                          style={
-                            task.completed === true
-                              ? { backgroundColor: "rgb(230, 20, 20)" }
-                              : { backgroundColor: "blueviolet" }
-                          }
                           className="clear-task"
                           onClick={() => deleteTask(task.id)}
+                          style={
+                            task.completed === true
+                              ? {
+                                  backgroundColor: "rgb(90, 37, 150)",
+                                  color: "#f3f3f3",
+                                }
+                              : { backgroundColor: "blueviolet", color: "#fff" }
+                          }
                         >
                           <FaTrashAlt />
                         </button>
@@ -245,26 +251,31 @@ function App() {
                       className={task.toggleTransition}
                       style={
                         task.completed === true
-                          ? { borderLeftColor: "red" }
+                          ? { borderLeftColor: "#ccc" }
                           : { borderLeftColor: "blueviolet" }
                       }
                     >
                       <div className="description-container">
                         <textarea
+                          disabled={disableElement(task)}
                           onChange={(e) => setDescription(e.target.value)}
                           defaultValue={task.description}
                           spellCheck="false"
                           placeholder="Insira mais detalhes da tarefa"
-                          style={
-                            task.completed === true
-                              ? { color: "rgba(0, 0, 0, 0.582)" }
-                              : { color: "black" }
-                          }
                         />
                         <div className="save-description-container">
                           <button
+                            disabled={disableElement(task)}
                             className="save-description"
                             onClick={() => saveDescription(task.id)}
+                            style={
+                              task.completed === true
+                                ? {
+                                    backgroundColor: "#ccc",
+                                    cursor: "not-allowed",
+                                  }
+                                : { backgroundColor: "blueviolet" }
+                            }
                           >
                             <VscSaveAs />
                           </button>
@@ -278,7 +289,7 @@ function App() {
           )}
 
           <div className="bottom-container">
-            <div className="active-tasks">
+            <div className="active-tasks-text-container">
               {notCompletedLen === "0"
                 ? "Nenhuma tarefa ativa."
                 : notCompletedLen === "1"

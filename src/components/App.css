@@ -136,7 +136,7 @@
   margin-top: 13px;
 }
 
-.active-tasks {
+.active-tasks-text-container {
   font-size: 15px;
   margin-top: 3px;
   display: inline-flex;
@@ -151,8 +151,6 @@
   font-size: 16px;
   width: 40px;
   height: 40px;
-  color: #fff;
-  background-color: blueviolet;
   border: none;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
