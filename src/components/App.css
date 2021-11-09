@@ -53,8 +53,12 @@
 
 .add-new-task:hover,
 .clearall-button:hover,
-.undone-button:hover {
+.undone-button:hover,
+.save-description:hover {
   background-color: rgb(108, 28, 184);
+}
+
+.unique-task-container {
 }
 
 .task {
@@ -123,6 +127,7 @@
   margin-right: 9px;
   color: #fff;
   padding-top: 3px;
+  transition: 0.5s;
 }
 
 .bottom-container {
@@ -172,27 +177,30 @@
 }
 
 .text-area {
-  width: 450px;
+  width: 800px;
 }
 
 .description-container {
   width: 100%;
   display: flex;
-  border: none;
-  background-color: rgb(241, 241, 241);
-  margin-bottom: 14px;
+  background-color: rgba(241, 241, 241, 0.651);
   border-radius: 3px;
   margin-top: -1px;
+  height: 110px;
 }
 
 #description-container-toggle {
   height: 0px;
   overflow: hidden;
-  transition: 300ms;
+  transition: 350ms;
+  border-left: 3px solid blueviolet;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 #description-container-toggle.active {
-  height: 100px;
+  height: 110px;
+  margin-bottom: 7px;
 }
 
 .save-description {
@@ -213,10 +221,10 @@
 textarea {
   width: 100%;
   font-size: 14.5px;
-  background-color: rgb(241, 241, 241);
+  background-color: rgba(241, 241, 241, 0);
   display: flex;
   justify-content: center;
-  height: 70px;
+  height: 80px;
   border: none;
   outline: none;
   resize: none;

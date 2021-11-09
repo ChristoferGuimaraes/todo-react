@@ -20,12 +20,6 @@ function App() {
   const notCompletedLen = String(notCompleted.length);
 
   useEffect(() => {
-    notCompleted.length === 0
-      ? (document.title = "Lista de Tarefas")
-      : (document.title = `(${notCompleted.length}) Lista de Tarefas`);
-  });
-
-  useEffect(() => {
     const tempLocal = localStorage.getItem("list");
     const loadedList = JSON.parse(tempLocal);
 
@@ -38,6 +32,12 @@ function App() {
     const tempLocal = JSON.stringify(list);
     localStorage.setItem("list", tempLocal);
   }, [list]);
+
+  useEffect(() => {
+    notCompleted.length === 0
+      ? (document.title = "Lista de Tarefas")
+      : (document.title = `(${notCompleted.length}) Lista de Tarefas`);
+  });
 
   useEffect(() => {
     const notCompletedFilter = [...list].filter(
@@ -55,8 +55,8 @@ function App() {
         text: task,
         description: "",
         toggle: false,
-        completed: false,
         toggleTransition: "inactive",
+        completed: false,
       };
 
       setList([...list].concat(newTask));
@@ -78,6 +78,7 @@ function App() {
       setList([...list].concat(temp));
     }
     setTemp("");
+    console.log(list);
   };
 
   const checkComplete = function (id) {
@@ -99,11 +100,7 @@ function App() {
   };
 
   const invalidInput = function (text) {
-    return toast.error(text, { position: toast.POSITION.TOP_CENTER });
-  };
-
-  const saveNotify = function (text) {
-    return toast.success(text, { position: toast.POSITION.BOTTOM_LEFT });
+    return toast.error(text, { position: "top-center", pauseOnHover: false });
   };
 
   const confirmModal = function () {
@@ -121,22 +118,30 @@ function App() {
       if (task.id === id) {
         task.toggle = !task.toggle;
         if (task.toggle === true) {
+          const notToggled = [...list].filter((task) => task.id !== id);
+          notToggled.map((task) => {
+            task.toggle = false;
+            task.toggleTransition = "inactive";
+            return task;
+          });
           task.toggleTransition = "active";
         } else {
           task.toggleTransition = "inactive";
         }
       }
-
       return task;
     });
     setList(updatedList);
   };
 
-  function saveDescription(id) {
+  const handleDescriptionChange = function (event) {
+    setDescription(event.target.value);
+  };
+
+  const saveDescription = function (id) {
     const updatedList = [...list].map((task) => {
       if (task.id === id) {
         task.description = description;
-        task.toggle = !task.toggle;
         if (task.text.length > 10) {
           saveNotify(`Tarefa "${task.text.substr(0, 10)}..." atualizada`);
         } else saveNotify(`Tarefa "${task.text}" atualizada`);
@@ -145,9 +150,15 @@ function App() {
       return task;
     });
     setList(updatedList);
-
     setDescription("");
-  }
+  };
+
+  const saveNotify = function (text) {
+    return toast.success(text, {
+      position: "bottom-left",
+      pauseOnHover: false,
+    });
+  };
 
   return (
     <>
@@ -156,7 +167,7 @@ function App() {
           <form onSubmit={handleSubmit}>
             <div className="title-container">
               <span className="title">Lista de Tarefas</span>
-              <span className="version">v.1.0.5</span>
+              <span className="version">v.1.0.6</span>
             </div>
             <div className="input-container">
               <InputText
@@ -237,10 +248,15 @@ function App() {
                     <div
                       id="description-container-toggle"
                       className={task.toggleTransition}
+                      style={
+                        task.completed === true
+                          ? { borderLeftColor: "red" }
+                          : { borderLeftColor: "blueviolet" }
+                      }
                     >
                       <div className="description-container">
                         <textarea
-                          onChange={(e) => setDescription(e.target.value)}
+                          onChange={(e) => handleDescriptionChange(e)}
                           defaultValue={task.description}
                           spellCheck="false"
                           placeholder="Insira mais detalhes da tarefa"
@@ -254,11 +270,6 @@ function App() {
                           <button
                             className="save-description"
                             onClick={() => saveDescription(task.id)}
-                            style={
-                              task.completed === true
-                                ? { backgroundColor: "rgb(230, 20, 20)" }
-                                : { backgroundColor: "blueviolet" }
-                            }
                           >
                             <VscSaveAs />
                           </button>
