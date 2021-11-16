@@ -7,7 +7,7 @@ function DarkMode() {
   const body = document.body;
   const lightTheme = "light";
   const darkTheme = "dark";
-  const [theme, setTheme] = useState(null);
+  const [theme, setTheme] = useState(null)
 
   useEffect(() => {
     const tempLocal = localStorage.getItem("theme");
@@ -34,7 +34,7 @@ function DarkMode() {
       body.classList.replace(darkTheme, lightTheme);
       e.target.classList.remove(clickedClass);
       localStorage.setItem("theme", "light");
-      setTheme(lightTheme);
+      setTheme(lightTheme)
     } else {
       body.classList.replace(lightTheme, darkTheme);
       e.target.classList.add(clickedClass);
@@ -49,9 +49,7 @@ function DarkMode() {
         className={theme === "dark" ? clickedClass : ""}
         id="darkMode"
         onClick={(e) => switchTheme(e)}
-      >
-        {theme === "dark" ? <MdDarkMode /> : <MdLightMode />}
-      </button>
+      >{theme === "dark" ? <MdDarkMode /> : <MdLightMode /> }</button>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Modal from "./Modal/index.js";
 import InputText from "./InputText/index.js";
 import DarkMode from "./DarkMode/index.js";
@@ -17,6 +17,7 @@ function App() {
   const [openModal, setOpenModal] = useState(false);
   const [description, setDescription] = useState("");
   const [temp, setTemp] = useState("");
+  const notificationId = useRef(null);
   const notCompletedLen = String(notCompleted.length);
 
   useEffect(() => {
@@ -93,13 +94,17 @@ function App() {
   const verifyInput = function () {
     if (task === "") {
       invalidInput("Adicione alguma tarefa");
-
       return false;
     } else return true;
   };
 
   const invalidInput = function (text) {
-    return toast.error(text, { position: "top-center", pauseOnHover: false });
+    if (!toast.isActive(notificationId.current)) {
+      notificationId.current = toast.error(text, {
+        position: "top-center",
+        pauseOnHover: false,
+      });
+    }
   };
 
   const confirmModal = function () {
@@ -149,10 +154,12 @@ function App() {
   };
 
   const saveNotify = function (text) {
-    return toast.success(text, {
-      position: "bottom-left",
-      pauseOnHover: false,
-    });
+    if (!toast.isActive(notificationId.current)) {
+      notificationId.current = toast.success(text, {
+        position: "bottom-left",
+        pauseOnHover: false,
+      });
+    }
   };
 
   const disableElement = function (task) {
@@ -166,7 +173,7 @@ function App() {
           <div className="title-container">
             <div>
               <span className="title">Lista de Tarefas</span>
-              <span className="version">v.1.1.0</span>
+              <span className="version">v.1.1.1</span>
             </div>
             <DarkMode />
           </div>
