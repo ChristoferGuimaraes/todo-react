@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "./Modal/index.js";
 import InputText from "./InputText/index.js";
+import DarkMode from "./DarkMode/index.js";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import { VscSaveAs } from "react-icons/vsc";
@@ -162,11 +163,15 @@ function App() {
     <>
       <div className="container">
         <div className="main-container">
-          <form onSubmit={handleSubmit}>
-            <div className="title-container">
+          <div className="title-container">
+            <div>
               <span className="title">Lista de Tarefas</span>
-              <span className="version">v.1.0.6</span>
+              <span className="version">v.1.1.0</span>
             </div>
+            <DarkMode />
+          </div>
+
+          <form onSubmit={handleSubmit}>
             <div className="input-container">
               <InputText
                 className="input-task"
@@ -180,6 +185,7 @@ function App() {
               </button>
             </div>
           </form>
+
           {list.length === 0 ? (
             <div className="no-task-field-container">
               <span>
@@ -251,7 +257,7 @@ function App() {
                       className={task.toggleTransition}
                       style={
                         task.completed === true
-                          ? { borderLeftColor: "#ccc" }
+                          ? { borderLeftColor: "rgba(179, 179, 179, 0.856)" }
                           : { borderLeftColor: "blueviolet" }
                       }
                     >
@@ -271,7 +277,8 @@ function App() {
                             style={
                               task.completed === true
                                 ? {
-                                    backgroundColor: "#ccc",
+                                    backgroundColor:
+                                      "rgba(179, 179, 179, 0.856)",
                                     cursor: "not-allowed",
                                   }
                                 : { backgroundColor: "blueviolet" }

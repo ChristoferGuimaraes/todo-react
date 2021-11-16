@@ -1,0 +1,29 @@
+#darkMode {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  padding-top: 3px;
+  cursor: pointer;
+  font-size: 24px;
+  border-radius: 3px;
+  color: blueviolet;
+  transition: 0.5s;
+}
+
+#darkMode:hover,
+#darkMode:focus {
+  filter: none;
+  cursor: pointer;
+}
+
+#darkMode.clicked {
+  filter: none !important;
+  color: #fff;
+}
+
+@media (max-width: 800px) {
+  #darkMode {
+    font-size: 27px;
+  }
+}
