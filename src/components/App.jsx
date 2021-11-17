@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import Modal from "./Modal/index.js";
-import InputText from "./InputText/index.js";
-import DarkMode from "./DarkMode/index.js";
+import Modal from "./Modal/index.jsx";
+import InputText from "./InputText/index.jsx";
+import DarkMode from "./DarkMode/index.jsx";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import { VscSaveAs } from "react-icons/vsc";
