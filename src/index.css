@@ -4,16 +4,18 @@
 }
 
 :root {
-  --black: rgb(49, 49, 49);
-  --white: rgb(255, 255, 255);
+  --black: #1b1c22;
+  --grey: #25262c;
+  --greymid: #33353d;
+  --greyless: rgba(241, 241, 241, 0.911);
+  --white: #fff;
+  --whiteless: rgb(240, 239, 239);
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background: var(--background-color);
   color: var(--text-color);
   font-weight: var(--font-weight);
@@ -21,13 +23,58 @@ body {
 }
 
 body.light {
-  --background-color: var(--white);
+  --background-color: var(--whiteless);
   --text-color: var(--black);
   --font-weight: 400;
+  --div-background: var(--white);
+  --div-background-task: var(--greyless);
 }
 
 body.dark {
   --background-color: var(--black);
-  --text-color: var(--white);
-  --font-weight: 500;
+  --text-color: var(--whiteless);
+  --font-weight: 480;
+  --div-background: var(--grey);
+  --div-background-task: var(--greymid);
+}
+
+.task {
+  background-color: var(--div-background-task);
+}
+
+.task-text {
+  color: var(--text-color);
+}
+
+.only-task-text {
+  color: var(--text-color);
+  transition: 300ms;
+}
+
+.modal-container {
+  background-color: var(--div-background);
+  color: var(--text-color);
+}
+
+.main-container {
+  background-color: var(--div-background);
+  transition: 30ms;
+}
+
+.description-container {
+  background-color: var(--div-background-task);
+}
+
+textarea {
+  color: var(--text-color);
+}
+
+@media (max-width: 800px) {
+  body.dark {
+    --background-color: var(--grey);
+  }
+
+  body.light {
+    background-color: var(--white);
+  }
 }

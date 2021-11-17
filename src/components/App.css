@@ -5,14 +5,17 @@
 }
 
 .main-container {
-  padding: 19px;
-  flex-direction: column;
-  position: relative;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-}
+    border-radius: 6px;
+    padding: 19px;
+    background-color: #fff;
+    box-shadow: 0.5px 0.5px 5px rgba(0, 0, 0, 0.233);
+    flex-direction: column;
+    position: relative;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+  }
 
 .input-container {
   text-align: center;
@@ -245,7 +248,7 @@ label > input[type="checkbox"] {
 label > input[type="checkbox"] + span {
   width: 20px;
   height: 20px;
-  border: solid 2px rgb(115, 50, 175);
+  border: solid 2px rgb(125, 60, 185);
   border-radius: 50px;
   display: inline-block;
   background-color: rgb(255, 255, 255);

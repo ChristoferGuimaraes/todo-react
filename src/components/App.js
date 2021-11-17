@@ -173,7 +173,7 @@ function App() {
           <div className="title-container">
             <div>
               <span className="title">Lista de Tarefas</span>
-              <span className="version">v.1.1.1</span>
+              <span className="version">v.1.1.2</span>
             </div>
             <DarkMode />
           </div>
@@ -223,11 +223,11 @@ function App() {
                                 : { color: "black" }
                             }
                           >
-                            {task.completed === true ? (
+                            <span className='only-task-text'>{task.completed === true ? (
                               <s>{task.text}</s>
                             ) : (
                               task.text
-                            )}
+                            )}</span>
                           </div>
                         </div>
                         <div className="inputs-task-container"></div>

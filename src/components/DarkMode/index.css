@@ -8,7 +8,6 @@
   font-size: 24px;
   border-radius: 3px;
   color: blueviolet;
-  transition: 0.5s;
 }
 
 #darkMode:hover,
@@ -18,8 +17,7 @@
 }
 
 #darkMode.clicked {
-  filter: none !important;
-  color: #fff;
+  color: rgb(241, 241, 241);
 }
 
 @media (max-width: 800px) {
