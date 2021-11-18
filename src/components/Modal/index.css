@@ -1,7 +1,7 @@
 .modal-background {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(56, 56, 56, 0.295);
+  background-color: rgba(56, 56, 56, 0.486);
   position: fixed;
 }
 
@@ -39,6 +39,7 @@
   height: 1px;
   background-color: #ccc;
   margin-top: 10px;
+  text-align: center;
 }
 
 .footer {

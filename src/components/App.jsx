@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { VscSaveAs } from "react-icons/vsc";
 import { ToastContainer, toast } from "react-toastify";
 import { FaTrashAlt } from "react-icons/fa";
-import { BiChevronDown, BiChevronUp } from "react-icons/bi";
+import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 import { RiArrowGoBackFill } from "react-icons/ri";
 
 function App() {
@@ -173,7 +173,7 @@ function App() {
           <div className="title-container">
             <div>
               <span className="title">Lista de Tarefas</span>
-              <span className="version">v.1.1.2</span>
+              <span className="version">v.1.1.3</span>
             </div>
             <DarkMode />
           </div>
@@ -192,7 +192,6 @@ function App() {
               </button>
             </div>
           </form>
-
           {list.length === 0 ? (
             <div className="no-task-field-container">
               <span>
@@ -236,9 +235,9 @@ function App() {
                           onClick={() => openDescription(task.id)}
                         >
                           {task.toggle === true ? (
-                            <BiChevronUp />
+                            <HiChevronUp />
                           ) : (
-                            <BiChevronDown />
+                            <HiChevronDown />
                           )}
                         </button>
                       </div>

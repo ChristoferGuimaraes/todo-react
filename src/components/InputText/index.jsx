@@ -6,13 +6,13 @@ function InputText({ className, onChange, value, placeholder, maxLength }) {
 
   const inputStyles = {
     inputFocus: {
-      boxShadow: "0px 0px 3px rgba(71, 23, 116, 0.792)",
-      border: "1px solid rgba(93, 28, 153, 0.518)",
-      transition: "0.3s",
+      boxShadow: "0px 0px 2px 3px rgba(155, 74, 231, 0.292)",
+      border: "none",
+      transition: "300ms",
     },
     inputBlur: {
       boxShadow: "none",
-      border: "1px solid black",
+      border: "none",
     },
   };
 
