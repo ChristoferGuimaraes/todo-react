@@ -70,13 +70,15 @@ function App() {
     const updatedList = [...list].filter((task) => task.id !== id);
     setList(updatedList);
 
-    const updatedTemp = list;
+    const updatedTemp = [...list].filter((task) => task.id === id);
     setTemp(updatedTemp);
   };
 
   const undoneTask = function () {
     if (temp !== "") {
-      setList(temp);
+      
+      setList([...list].concat(temp));
+      console.log(list)
     }
     setTemp("");
   };
