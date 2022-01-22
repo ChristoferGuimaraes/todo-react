@@ -63,6 +63,6 @@ Bibliotecas e Frameworks que foram usados:
 
 Christofer Guimarães - [LinkedIn](https://www.linkedin.com/in/christofer-guimar%C3%A3es-351149218/) - christoferguima@gmail.com
 
-Project Link: [https://github.com/ChristoferGuimaraes/tractian-challenge](https://github.com/ChristoferGuimaraes/quizzer-game)
+Project Link: [https://github.com/ChristoferGuimaraes/todo-react](https://github.com/ChristoferGuimaraes/todo-react)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
