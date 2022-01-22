@@ -2,7 +2,7 @@
 
 # Lista de Tarefas
 
-Uma lista de tarefas simples desenvovildo em ReactJS.
+Uma lista de tarefas simples desenvolvido em ReactJS.
 
 ![listatarefas-photo](https://user-images.githubusercontent.com/32392449/150414371-66179d8e-4f07-43c2-ac0e-a1e25220a3dd.png)
 
